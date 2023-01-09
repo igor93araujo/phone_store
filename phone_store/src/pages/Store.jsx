@@ -23,7 +23,7 @@ export const Store = () => {
     const element = cart.find((e)=> e.id === obj.id) // se for true, quer dizer q tenho esse elemento lá no cart. 
     //se tiver o elemento e ele tiver clicado, sig que ja tem o elemento e temos que remover ele do cart.
     if(element){
-      const arrFilter = cart.filter((e)=> e.id !== obj.id); // se esse elem tiver id diferente do id do obj, sig que quero colocar ele no cart. 
+      const arrFilter = cart.filter((e)=> e.id !== obj.id); // se esse elem tiver id diferente do id do obj, sig que quero colocar todos, exceto esse no cart. 
       setCart(arrFilter);
       setItem('carrinho', arrFilter)
     } else { // se o elemento nao ta no carrinho, vc quer adc ele no carrinho, pegando os elementos e juntando c o novo. 
@@ -42,7 +42,7 @@ export const Store = () => {
             <div key={item.id}>
               <h4>{item.title}</h4>
               <img src={item.thumbnail} alt={item.id} />
-              <h4>{item.price}</h4>
+              <h4>{`R$${item.price},00`}</h4>
               <button
               onClick={()=>handleClick(item)}
               >
